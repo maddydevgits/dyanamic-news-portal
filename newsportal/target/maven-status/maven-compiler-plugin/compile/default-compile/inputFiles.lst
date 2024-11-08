@@ -1,0 +1,14 @@
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\Controller\AdminController.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\Controller\AuthController.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\Controller\NewsController.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\model\News.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\model\Role.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\model\User.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\NewsportalApplication.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\repository\NewsRepository.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\repository\UserRepository.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\security\SecurityConfig.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\security\WebSecurityConfig.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\service\AuthService.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\service\NewsService.java
+C:\Users\Sudheer\OneDrive\Desktop\newsportal\src\main\java\com\newsportal\newsportal\service\UserService.java

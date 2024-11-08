@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #007bff; /* Navbar background color */
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: white !important; /* Navbar text color */
+        }
+
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+
+        /* Dashboard Container */
+        .employee-dashboard-container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        h2, h4 {
+            color: #333;
+        }
+
+        /* Form Styles */
+        .form-control, .form-control-file {
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .employee-dashboard-container {
+                margin-top: 30px;
+            }
+
+            .card {
+                margin-bottom: 15px;
+            }
+
+            .card-body {
+                padding: 15px;
+            }
+
+            .btn-primary {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            .navbar-toggler {
+                margin-right: 10px;
+            }
+
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+
+        /* For smaller mobile screens */
+        @media (max-width: 480px) {
+            .employee-dashboard-container {
+                margin-top: 20px;
+            }
+
+            .card-body {
+                padding: 10px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h4 {
+                font-size: 1.25rem;
+            }
+
+            .btn-primary {
+                font-size: 13px;
+                padding: 7px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" th:href="@{/}">Dynamic News Portal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/news}">View News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Employee Dashboard Content -->
+    <div class="container employee-dashboard-container">
+        <h2 class="text-center mb-4">Welcome, Employee!</h2>
+
+        <!-- Upload News Form -->
+        <h4>Upload News Article</h4>
+        <form th:action="@{/employee/uploadnews}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">News Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Upload Image</label>
+                <input type="file" class="form-control-file" id="image" name="image" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit News</button>
+        </form>
+
+        <!-- Previously Uploaded News Section -->
+        <h4 class="mt-5">Previously Uploaded News Articles</h4>
+        <div class="row" th:each="newsItem : ${newsItems}">
+            <div class="col-md-4 col-sm-6 col-12">
+                <div class="card">
+                    <img th:src="@{${newsItem.imageUrl}}" class="card-img-top" alt="News Image">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${newsItem.title}">News Title</h5>
+                        <p class="card-text" th:text="${newsItem.description}">News Description</p>
+                        <p class="card-text"><small class="text-muted" th:text="'By: ' + ${newsItem.author}">Author Name</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Dynamic News Portal. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

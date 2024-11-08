@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Dynamic News Portal</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+        .register-container {
+            margin-top: 100px;
+        }
+        .register-card {
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .register-card h3 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container register-container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="register-card">
+                    <h3 class="text-center">Register</h3>
+                    <!-- Thymeleaf form action to registration handler -->
+                    <form th:action="@{/register}" method="post">
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Create password" required>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Your Location</label>
+                            <select class="form-control" id="userType" name="location">
+                                <option value="Guntur">Guntur</option>
+                                <option value="Vijayavada">Vijayavada</option>
+                                <option value="Nellore">Nellore</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </div>
+
+                        <!-- Login Link -->
+                        <div class="text-center">
+                            <p>Already have an account?</p> <a href="/login">Login here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
