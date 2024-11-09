@@ -39,7 +39,7 @@ public class EmployeeController {
             Employee employee = employeeRepository.findByEmailAndPassword(email, password);
             
             if (employee != null) {
-                session.setAttribute("employee", employee);  // Store employee in session
+                session.setAttribute("employee", employee.getEmail());  // Store employee in session
                 return "redirect:/employee/employeeDashboard";       // Redirect to employee dashboard
             } else {
                 model.addAttribute("error", "Invalid email or password");
@@ -50,7 +50,7 @@ public class EmployeeController {
         // Employee Dashboard
         @GetMapping("/employeeDashboard")
         public String dashboard(HttpSession session, Model model) {
-            Employee employee = (Employee) session.getAttribute("employee");
+            String employee = (String) session.getAttribute("employee");
             if (employee == null) {
                 return "redirect:/login";                    // Redirect if not logged in
             }

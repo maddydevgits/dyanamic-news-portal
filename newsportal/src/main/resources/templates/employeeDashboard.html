@@ -134,7 +134,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/news}">View News</a>
+                    <a class="nav-link" th:href="@{/employeenews}">View News</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/logout}">Logout</a>
@@ -165,8 +165,10 @@
             <button type="submit" class="btn btn-primary">Submit News</button>
         </form>
 
+        <br/><br/>
+
         <!-- Previously Uploaded News Section -->
-        <h4 class="mt-5">Previously Uploaded News Articles</h4>
+        <!-- <h4 class="mt-5">Previously Uploaded News Articles</h4>
         <div class="row" th:each="newsItem : ${newsItems}">
             <div class="col-md-4 col-sm-6 col-12">
                 <div class="card">
@@ -178,7 +180,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- Footer -->

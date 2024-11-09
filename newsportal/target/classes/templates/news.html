@@ -125,7 +125,9 @@
             <div th:each="news : ${newsList}" class="news-item">
                 <div class="news-card">
                     <img th:src="@{${news.imageUrl}}" alt="News Image" class="news-image">
-                    <h3 th:text="${news.title}" class="news-card-title">News Title</h3>
+                    <h5 class="news-card-title">
+                        <a th:href="@{/adminnews/{id}(id=${news.id})}" th:text="${news.title}">News Title</a>
+                    </h5>
                     <p th:text="${news.description}" class="news-card-text">News Description</p>
                 </div>
             </div>

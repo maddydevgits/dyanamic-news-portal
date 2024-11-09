@@ -134,7 +134,7 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" th:href="@{/}">Dynamic News Portal</a>
+        <a class="navbar-brand" th:href="@{/adminDashboard}">Dynamic News Portal</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -170,7 +170,7 @@
                     <td th:text="${employee.location}"></td>
                     <td>
                         <a th:href="@{/employeeDetail/{id}(id=${employee.id})}" class="btn btn-info btn-sm">View</a>
-                        <a th:href="@{/employees/delete/{id}(id=${employee.id})}" class="btn btn-danger btn-sm"
+                        <a th:href="@{/employee/delete/{id}(id=${employee.id})}" class="btn btn-danger btn-sm"
                onclick="return confirm('Are you sure you want to delete this employee?');">Delete</a>
                     </td>
                 </tr>

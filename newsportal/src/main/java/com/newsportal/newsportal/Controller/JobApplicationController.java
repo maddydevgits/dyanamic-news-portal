@@ -16,6 +16,7 @@ import com.newsportal.newsportal.model.User;
 import com.newsportal.newsportal.repository.EmployeeRepository;
 import com.newsportal.newsportal.repository.JobApplicationRepository;
 import com.newsportal.newsportal.repository.UserRepository;
+import com.newsportal.newsportal.service.EmailService;
 import com.newsportal.newsportal.service.JobApplicationService;
 
 import jakarta.servlet.http.HttpSession;
@@ -25,6 +26,9 @@ import org.springframework.ui.Model;
 
 @Controller
 public class JobApplicationController {
+
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private JobApplicationService jobApplicationService;
@@ -57,11 +61,19 @@ public class JobApplicationController {
     
     @PostMapping("/applyjob")
     public String applyJob(@ModelAttribute JobApplication jobApplication, HttpSession session) {
-        User user = (User) session.getAttribute("user"); // Cast to User
+        String user = (String) session.getAttribute("user"); // Cast to User
         if (user != null) {
         	// System.out.print(jobApplication.getLocation());
-            String username = user.getName(); // Get the username from the User object
+            String username = user; // Get the username from the User object
             jobApplication.setAppliedBy(username); // Set the username to appliedBy
+            String subject = "Job Application Received";
+            String body = "<div><b>Dear " + jobApplication.getName() + ",</b></div>"
+                    + "<div>Thank you for applying for a position with us. We will review your application and get back to you soon.</div>";
+            
+            // Send confirmation email
+            String response = emailService.sendEmail(jobApplication.getEmail(), jobApplication.getName(), subject, body);
+            System.out.println("Email response: " + response);
+
         } else {
             // Handle the case where user is null, possibly redirect to login
             return "redirect:/login";
@@ -107,16 +119,30 @@ public class JobApplicationController {
 
                 // Delete the user from the User table
                 userRepository.delete(user);
+
+                String subject = "Job Application Status";
+                String body = "<div><b>Dear " + user.getName() + ",</b></div>" +
+                            "<div>Congratulations! Your job application has been approved.</div>" +
+                            "<div>Welcome to the team! We will contact you with further details soon.</div>";
+                emailService.sendEmail(user.getEmail(), user.getName(), subject, body);
             }
         }
 
-        return "redirect:/applications";  // Redirect to applications page
+        return "redirect:/adminDashboard";  // Redirect to applications page
     }
 
     @PostMapping("/applications/reject/{id}")
     public String rejectApplication(@PathVariable Long id) {
-    jobApplicationService.updateApplicationStatus(id, "Rejected");
-    return "redirect:/applications";  // Redirect to applications page
+        JobApplication application = repo.findById(id).get();
+        User user = userRepository.findByEmail(application.getEmail());
+        jobApplicationService.updateApplicationStatus(id, "Rejected");
+        String subject = "Job Application Status";
+        String body = "<div><b>Dear " + user.getName() + ",</b></div>" +
+                            "<div>Oops! Your job application has been rejected.</div>" +
+                            "<div>Keep working on your weaknesses.</div>";
+                            
+        emailService.sendEmail(user.getEmail(), user.getName(), subject, body);
+        return "redirect:/adminDashboard";  // Redirect to applications page
 }
 
     @PostMapping("/applications/update/{id}")

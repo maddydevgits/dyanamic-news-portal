@@ -12,6 +12,9 @@ public class UserService {
     private UserRepository userRepository;
 
     public User registerUser(User user) {
+        if (userRepository.existsByEmail(user.getEmail())) {
+            return null; // Return to the registration page with the message
+        }
         return userRepository.save(user);
     }
 

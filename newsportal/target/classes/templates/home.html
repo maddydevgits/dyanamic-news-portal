@@ -125,10 +125,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="#home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#about">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">News</a>
@@ -141,20 +141,20 @@
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero">
+    <div class="hero" id="#home">
         <h1>Welcome to the Dynamic News Portal</h1>
         <p>Stay updated with real-time, verified news</p>
     </div>
 
     <!-- Card Section for Admin, Employee, User -->
-    <div class="container card-section">
+    <div class="container card-section" id="#about">
         <div class="row">
             <div class="col-md-4">
                 <div class="card text-center">
                     <div class="card-body">
                         <h5 class="card-title">Admin</h5>
                         <p class="card-text">Oversee the portal, manage employees, and ensure only verified news is published.</p>
-                        <a href="#" class="btn btn-primary">Manage Portal</a>
+                        <a href="/adminlogin" class="btn btn-primary">Admin Portal</a>
                     </div>
                 </div>
             </div>
@@ -163,7 +163,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Employee</h5>
                         <p class="card-text">Upload verified news articles for approval by the admin.</p>
-                        <a href="#" class="btn btn-primary">Dashboard</a>
+                        <a href="/employee/login" class="btn btn-primary">Employee Portal</a>
                     </div>
                 </div>
             </div>
@@ -180,7 +180,7 @@
     </div>
 
     <!-- Verified News Section -->
-    <div class="verified-news">
+    <div class="verified-news" id="#news">
         <div class="container">
             <h2>Only Verified News Allowed</h2>
             <p>We ensure that only reliable, verified news articles are published on our portal. Help us maintain accuracy by reporting any suspicious content.</p>
