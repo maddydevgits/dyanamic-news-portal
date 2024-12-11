@@ -11,6 +11,7 @@ public class News {
     private Long id;
 
     private String title;
+    @Column(length = 1000) // Specify the desired length
     private String description;
 
     // Getters and Setters

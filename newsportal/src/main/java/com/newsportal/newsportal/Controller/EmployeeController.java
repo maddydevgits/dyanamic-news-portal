@@ -66,7 +66,7 @@ public class EmployeeController {
             @RequestParam("image") MultipartFile imageFile,
             HttpSession session) {
     
-        Employee employee = (Employee) session.getAttribute("employee");
+        String employee = (String) session.getAttribute("employee");
         if (employee == null) {
             return "redirect:/login"; // Redirect if not logged in
         }
